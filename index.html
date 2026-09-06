@@ -127,13 +127,13 @@ section{padding:95px 0}
 .photo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:end;margin-bottom:38px}
 .photo-wrap p{color:var(--muted);font-size:18px;line-height:1.6}
 .gallery{
-  columns:3 290px;
-  column-gap:16px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 
 .shot{
-  break-inside:avoid;
-  margin-bottom:16px;
+  margin-bottom:0;
   border-radius:18px;
   overflow:hidden;
   background:var(--soft);
@@ -163,6 +163,10 @@ footer{padding:28px 0 45px;border-top:1px solid var(--line);color:var(--muted);f
   .pub-links{justify-content:flex-start}
   .item{grid-template-columns:1fr}
   .info-grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .gallery{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -399,8 +403,7 @@ footer{padding:28px 0 45px;border-top:1px solid var(--line);color:var(--muted);f
 
 <footer>
   <div class="container footer">
-    <span>© 2026 Justin Huang</span>
-    <span>Computer Architecture · University of Cambridge</span>
+    <span>© 2026 Yinting Huang</span>
   </div>
 </footer>
 
