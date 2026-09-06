@@ -126,15 +126,29 @@ section{padding:95px 0}
 .info-card ul{margin:0;padding-left:18px;color:var(--body);line-height:1.75}
 .photo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:end;margin-bottom:38px}
 .photo-wrap p{color:var(--muted);font-size:18px;line-height:1.6}
-.gallery{columns:3 290px;column-gap:16px}
-.shot{break-inside:avoid;border-radius:18px;margin-bottom:16px;overflow:hidden;background:#ddd}
-.ph{min-height:290px;padding:20px;display:flex;align-items:flex-end;color:white;font-size:13px}
-.p1{min-height:430px;background:linear-gradient(145deg,#8494a8,#d9b98f 50%,#27394d)}
-.p2{min-height:300px;background:linear-gradient(145deg,#d7dce0,#75838d 55%,#283039)}
-.p3{min-height:500px;background:linear-gradient(145deg,#eec49d,#a2674a 48%,#3d4a57)}
-.p4{min-height:350px;background:linear-gradient(145deg,#b8c0cd,#6e8097 50%,#26303d)}
-.p5{min-height:450px;background:linear-gradient(145deg,#e3d5c0,#7c654f 50%,#2b3136)}
-.p6{min-height:320px;background:linear-gradient(145deg,#c7ccc3,#68786c 50%,#2e3631)}
+.gallery{
+  columns:3 290px;
+  column-gap:16px;
+}
+
+.shot{
+  break-inside:avoid;
+  margin-bottom:16px;
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--soft);
+}
+
+.shot img{
+  width:100%;
+  height:auto;
+  display:block;
+  transition:transform .45s ease;
+}
+
+.shot:hover img{
+  transform:scale(1.025);
+}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
 .contact p{color:var(--muted);line-height:1.6}
 footer{padding:28px 0 45px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
@@ -275,8 +289,8 @@ footer{padding:28px 0 45px;border-top:1px solid var(--line);color:var(--muted);f
         <div><h3>CPU Architecture Research Engineer</h3><p>Huawei Newton Research Centre · Microarchitecture, hardware prefetching, simulation, and performance analysis.</p></div>
       </div>
       <div class="item">
-        <div class="date">December 2023 - May 2024</div>
-        <div><h3>Undergraduate Researcher</h3><p>Imperial College London · FPGA acceleration.</p></div>
+        <div class="date">December 2023 - May 2025</div>
+        <div><h3>Undergraduate Researcher</h3><p>Imperial College London · FPGA acceleration for large language models.</p></div>
       </div>
     </div>
   </div>
@@ -327,23 +341,38 @@ footer{padding:28px 0 45px;border-top:1px solid var(--line);color:var(--muted);f
     <div class="photo-wrap">
       <div>
         <div class="label">Photography</div>
-        <h2 class="title">Selected personal work.</h2>
+        <h2 class="title">Frames Beyond Research.</h2>
       </div>
       <p>
-        Outside research, I photograph landscapes, architecture, streets, and travel.
-        This section is intentionally separated from the academic profile so the site
-        retains a formal research identity while still showing personal interests.
+        Outside research, I use photography to explore places, light, and everyday moments — from architecture and city streets to landscapes.
       </p>
     </div>
 
-    <div class="gallery">
-      <div class="shot"><div class="ph p1">Scotland</div></div>
-      <div class="shot"><div class="ph p2">London</div></div>
-      <div class="shot"><div class="ph p3">Venice</div></div>
-      <div class="shot"><div class="ph p4">Cambridge</div></div>
-      <div class="shot"><div class="ph p5">Paris</div></div>
-      <div class="shot"><div class="ph p6">Dolomites</div></div>
-    </div>
+<div class="gallery">
+  <div class="shot">
+    <img src="images/photo-1.jpg" alt="Photography">
+  </div>
+
+  <div class="shot">
+    <img src="images/photo-2.jpg" alt="Photography">
+  </div>
+
+  <div class="shot">
+    <img src="images/photo-3.jpg" alt="Photography">
+  </div>
+
+  <div class="shot">
+    <img src="images/photo-4.jpg" alt="Photography">
+  </div>
+
+  <div class="shot">
+    <img src="images/photo-5.jpg" alt="Photography">
+  </div>
+
+  <div class="shot">
+    <img src="images/photo-6.jpg" alt="Photography">
+  </div>
+</div>
   </div>
 </section>
 
@@ -351,20 +380,14 @@ footer{padding:28px 0 45px;border-top:1px solid var(--line);color:var(--muted);f
   <div class="container contact-grid">
     <div>
       <div class="label">Contact</div>
-      <h2 class="title">Research collaboration and academic enquiries.</h2>
+      <h2 class="title">Research collaboration and professional opportunities.</h2>
     </div>
     <div>
       <p>
         Department of Computer Science and Technology<br>
         University of Cambridge<br><br>
-        Email: your-crsid@cam.ac.uk
+        Email: yinting_justin_huang@outlook.com
       </p>
-      <div class="quicklinks">
-        <a class="btn primary" href="mailto:your-crsid@cam.ac.uk">Email</a>
-        <a class="btn" href="https://github.com/justinhuang666666" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="btn" href="https://uk.linkedin.com/in/yinting-huang-6a8a73252" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn" href="https://ieeexplore.ieee.org/author/595436216212243" target="_blank" rel="noopener noreferrer">IEEE Xplore</a>
-      </div>
     </div>
   </div>
 </section>
