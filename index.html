@@ -81,8 +81,20 @@ a{
 }
 
 .container{
-  width:min(calc(100% - 40px),var(--max));
+  width:min(calc(100% - 48px),var(--max));
   margin:auto;
+}
+
+@media(max-width:700px){
+  .container{
+    width:min(calc(100% - 28px),var(--max));
+  }
+}
+
+@media(max-width:420px){
+  .container{
+    width:min(calc(100% - 20px),var(--max));
+  }
 }
 
 /* ---------- Navigation ---------- */
@@ -142,14 +154,18 @@ nav{
 /* ---------- Hero ---------- */
 
 .hero{
-  padding:90px 0 75px;
+  padding:clamp(56px,8vw,90px) 0 clamp(52px,7vw,75px);
 }
 
 .hero-grid{
   display:grid;
-  grid-template-columns:1.55fr .45fr;
-  gap:58px;
+  grid-template-columns:minmax(0,1.55fr) minmax(210px,.45fr);
+  gap:clamp(28px,5vw,58px);
   align-items:start;
+}
+
+.hero-grid > *{
+  min-width:0;
 }
 
 .kicker{
@@ -159,29 +175,30 @@ nav{
 }
 
 h1{
-  font-size:clamp(40px,5vw,68px);
+  font-size:clamp(38px,5.2vw,68px);
   letter-spacing:-.045em;
   line-height:1;
   margin:0;
   font-weight:650;
+  overflow-wrap:anywhere;
 }
 
 .role{
-  font-size:clamp(24px,2.5vw,34px);
+  font-size:clamp(22px,2.5vw,34px);
   letter-spacing:-.025em;
-  margin:28px 0 8px;
+  margin:clamp(20px,3vw,28px) 0 8px;
 }
 
 .affil{
-  font-size:19px;
+  font-size:clamp(16px,1.6vw,19px);
   color:var(--muted);
   line-height:1.5;
 }
 
 .summary{
   max-width:790px;
-  margin-top:28px;
-  font-size:20px;
+  margin-top:clamp(20px,3vw,28px);
+  font-size:clamp(17px,1.65vw,20px);
   line-height:1.55;
   color:var(--body);
 }
@@ -193,6 +210,17 @@ h1{
 .summary a:hover{
   text-decoration:underline;
   text-underline-offset:3px;
+}
+
+.research-summary{
+  max-width:900px;
+  margin:0 0 42px min(280px,23.5%);
+}
+
+@media(max-width:850px){
+  .research-summary{
+    margin-left:0;
+  }
 }
 
 .quicklinks{
@@ -215,7 +243,7 @@ h1{
 }
 
 .portrait{
-  width:264px;
+  width:min(100%,264px);
   max-width:264px;
   aspect-ratio:4/5;
   border-radius:28px;
@@ -236,7 +264,7 @@ h1{
 /* ---------- Sections ---------- */
 
 section{
-  padding:95px 0;
+  padding:clamp(58px,8vw,95px) 0;
 }
 
 .soft{
@@ -245,9 +273,13 @@ section{
 
 .section-head{
   display:grid;
-  grid-template-columns:240px 1fr;
-  gap:40px;
-  margin-bottom:42px;
+  grid-template-columns:minmax(150px,240px) minmax(0,1fr);
+  gap:clamp(24px,4vw,40px);
+  margin-bottom:clamp(30px,5vw,42px);
+}
+
+.section-head > *{
+  min-width:0;
 }
 
 .label{
@@ -259,17 +291,18 @@ section{
 }
 
 .title{
-  font-size:clamp(34px,4vw,55px);
+  font-size:clamp(30px,4vw,55px);
   letter-spacing:-.04em;
   line-height:1.06;
   margin:0;
+  overflow-wrap:anywhere;
 }
 
 /* ---------- Research ---------- */
 
 .research-list{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
 
@@ -297,8 +330,8 @@ section{
 
 .pub{
   display:grid;
-  grid-template-columns:110px 1fr 180px;
-  gap:25px;
+  grid-template-columns:minmax(80px,110px) minmax(0,1fr) minmax(120px,180px);
+  gap:clamp(16px,3vw,25px);
   padding:25px 0;
   border-top:1px solid var(--line);
 }
@@ -339,8 +372,8 @@ section{
 
 .item{
   display:grid;
-  grid-template-columns:180px 1fr;
-  gap:28px;
+  grid-template-columns:minmax(145px,180px) minmax(0,1fr);
+  gap:clamp(18px,3vw,28px);
   padding:24px 0;
   border-bottom:1px solid var(--line);
 }
@@ -404,14 +437,26 @@ section{
   line-height:1.6;
 }
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
+.gallery-carousel{
+  position:relative;
+  width:100%;
+}
+
+.gallery-viewport{
+  overflow:hidden;
+  width:100%;
+}
+
+.gallery-track{
+  display:flex;
   gap:16px;
+  transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  will-change:transform;
 }
 
 .shot{
-  margin-bottom:0;
+  flex:0 0 calc((100% - 32px) / 3);
+  min-width:0;
   border-radius:18px;
   overflow:hidden;
   background:var(--soft);
@@ -419,7 +464,8 @@ section{
 
 .shot img{
   width:100%;
-  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
   display:block;
   transition:transform .45s ease;
 }
@@ -428,12 +474,129 @@ section{
   transform:scale(1.025);
 }
 
+.gallery-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  margin-top:24px;
+}
+
+.gallery-arrow{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--button);
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  transition:
+    background-color .2s ease,
+    transform .2s ease,
+    opacity .2s ease;
+}
+
+.gallery-arrow:hover:not(:disabled){
+  transform:translateY(-1px);
+}
+
+.gallery-arrow:disabled{
+  opacity:.3;
+  cursor:default;
+}
+
+.gallery-dots{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+}
+
+.gallery-dot{
+  width:7px;
+  height:7px;
+  padding:0;
+  border:0;
+  border-radius:999px;
+  background:var(--muted);
+  opacity:.3;
+  cursor:pointer;
+  transition:
+    width .25s ease,
+    opacity .25s ease,
+    background-color .25s ease;
+}
+
+.gallery-dot.active{
+  width:22px;
+  opacity:1;
+  background:var(--accent);
+}
+
+@media(max-width:850px){
+  .photo-wrap{
+    grid-template-columns:1fr;
+  }
+
+  .shot{
+    flex:0 0 calc((100% - 16px) / 2);
+  }
+}
+
+@media(max-width:560px){
+  .photo-wrap{
+    gap:18px;
+    margin-bottom:28px;
+  }
+
+  .photo-wrap p{
+    font-size:16px;
+  }
+
+  .gallery-track{
+    gap:12px;
+  }
+
+  .shot{
+    flex:0 0 100%;
+  }
+
+  .shot img{
+    aspect-ratio:4/3;
+  }
+
+  .gallery-controls{
+    margin-top:18px;
+  }
+
+  .gallery-arrow{
+    width:40px;
+    height:40px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .gallery-track,
+  .shot img{
+    transition:none;
+  }
+}
+
 /* ---------- Contact ---------- */
 
 .contact-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:50px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(28px,5vw,50px);
+}
+
+.contact-grid > *{
+  min-width:0;
 }
 
 .contact p{
@@ -457,6 +620,26 @@ footer{
 
 /* ---------- Responsive ---------- */
 
+@media(max-width:1000px){
+  .hero-grid{
+    grid-template-columns:minmax(0,1fr) minmax(190px,230px);
+    gap:34px;
+  }
+
+  .research-list{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .pub{
+    grid-template-columns:90px minmax(0,1fr);
+  }
+
+  .pub-links{
+    grid-column:2;
+    justify-content:flex-start;
+  }
+}
+
 @media(max-width:850px){
   .links{
     display:none;
@@ -469,10 +652,22 @@ footer{
     grid-template-columns:1fr;
   }
 
+  .hero-grid{
+    gap:30px;
+  }
+
+  .portrait-wrap{
+    order:-1;
+  }
+
   .portrait{
-    width:180px;
-    max-width:180px;
+    width:min(46vw,220px);
+    max-width:220px;
     justify-self:start;
+  }
+
+  .section-head{
+    gap:14px;
   }
 
   .research-list{
@@ -484,6 +679,7 @@ footer{
   }
 
   .pub-links{
+    grid-column:auto;
     justify-content:flex-start;
   }
 
@@ -495,16 +691,115 @@ footer{
     grid-template-columns:1fr;
   }
 
-  .gallery{
-    grid-template-columns:repeat(2,1fr);
+  .quicklinks{
+    gap:10px;
+  }
+
+  .btn{
+    padding:10px 15px;
+  }
+
+  .footer{
+    flex-direction:column;
+    gap:8px;
   }
 }
 
 @media(max-width:560px){
-  .gallery{
-    grid-template-columns:1fr;
+  nav .nav{
+    height:56px;
+  }
+
+  .logo{
+    font-size:16px;
+  }
+
+  .hero{
+    padding-top:44px;
+  }
+
+  h1{
+    font-size:clamp(36px,11vw,48px);
+  }
+
+  .role{
+    font-size:clamp(21px,7vw,27px);
+  }
+
+  .summary{
+    font-size:17px;
+  }
+
+  .portrait{
+    width:min(58vw,190px);
+  }
+
+  .quicklinks{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    width:100%;
+  }
+
+  .btn{
+    text-align:center;
+  }
+
+  .card,
+  .info-card{
+    padding:22px;
+    border-radius:20px;
+  }
+
+  .pub,
+  .item{
+    padding:20px 0;
+  }
+
+  .photo-wrap{
+    gap:18px;
+    margin-bottom:28px;
+  }
+
+  .photo-wrap p{
+    font-size:16px;
+  }
+
+  .gallery-track{
+    gap:12px;
+  }
+
+  .shot{
+    flex:0 0 100%;
+  }
+
+  .shot img{
+    aspect-ratio:4/3;
+  }
+
+  .gallery-controls{
+    margin-top:18px;
+  }
+
+  .gallery-arrow{
+    width:40px;
+    height:40px;
+  }
+
+  .contact p{
+    overflow-wrap:anywhere;
   }
 }
+
+@media(max-width:380px){
+  .quicklinks{
+    grid-template-columns:1fr;
+  }
+
+  .portrait{
+    width:min(66vw,180px);
+  }
+}
+
 </style>
 </head>
 
@@ -631,8 +926,7 @@ footer{
     </div>
 
     <p
-      class="summary"
-      style="max-width:900px;margin:0 0 42px 280px;"
+      class="summary research-summary"
     >
       Existing hardware prefetchers are typically specialised for particular
       access patterns and make limited use of the rich program context available
@@ -837,45 +1131,50 @@ footer{
       </p>
     </div>
 
-    <div class="gallery">
+    <div class="gallery-carousel">
 
-      <div class="shot">
-        <img src="images/photo-1.jpg" alt="Photography">
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="gallery-track">
+
+          <div class="shot"><img src="images/photo-1.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-2.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-3.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-4.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-5.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-6.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-7.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-8.jpg" alt="Photography"></div>
+          <div class="shot"><img src="images/photo-9.jpg" alt="Photography"></div>
+
+        </div>
       </div>
 
-      <div class="shot">
-        <img src="images/photo-2.jpg" alt="Photography">
-      </div>
+      <div class="gallery-controls">
 
-      <div class="shot">
-        <img src="images/photo-3.jpg" alt="Photography">
-      </div>
+        <button
+          class="gallery-arrow"
+          id="gallery-prev"
+          type="button"
+          aria-label="Previous photographs"
+        >‹</button>
 
-      <div class="shot">
-        <img src="images/photo-4.jpg" alt="Photography">
-      </div>
+        <div
+          class="gallery-dots"
+          id="gallery-dots"
+          aria-label="Photography carousel navigation"
+        ></div>
 
-      <div class="shot">
-        <img src="images/photo-5.jpg" alt="Photography">
-      </div>
+        <button
+          class="gallery-arrow"
+          id="gallery-next"
+          type="button"
+          aria-label="Next photographs"
+        >›</button>
 
-      <div class="shot">
-        <img src="images/photo-6.jpg" alt="Photography">
-      </div>
-
-      <div class="shot">
-        <img src="images/photo-7.jpg" alt="Photography">
-      </div>
-
-      <div class="shot">
-        <img src="images/photo-8.jpg" alt="Photography">
-      </div>
-
-      <div class="shot">
-        <img src="images/photo-9.jpg" alt="Photography">
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -968,6 +1267,126 @@ footer{
         applyTheme(systemTheme());
       }
     });
+})();
+
+(function () {
+  const track = document.getElementById("gallery-track");
+  const viewport = document.querySelector(".gallery-viewport");
+  const prevButton = document.getElementById("gallery-prev");
+  const nextButton = document.getElementById("gallery-next");
+  const dotsContainer = document.getElementById("gallery-dots");
+
+  if (!track || !viewport || !prevButton || !nextButton || !dotsContainer) {
+    return;
+  }
+
+  const slides = Array.from(track.querySelectorAll(".shot"));
+
+  let currentPage = 0;
+  let itemsPerPage = 3;
+  let pageCount = 1;
+
+  function getItemsPerPage() {
+    if (window.matchMedia("(max-width: 560px)").matches) {
+      return 1;
+    }
+
+    if (window.matchMedia("(max-width: 850px)").matches) {
+      return 2;
+    }
+
+    return 3;
+  }
+
+  function getGap() {
+    if (window.matchMedia("(max-width: 560px)").matches) {
+      return 12;
+    }
+    return 16;
+  }
+
+  function buildDots() {
+    dotsContainer.innerHTML = "";
+    pageCount = Math.ceil(slides.length / itemsPerPage);
+
+    for (let i = 0; i < pageCount; i++) {
+      const dot = document.createElement("button");
+      dot.className = "gallery-dot";
+      dot.type = "button";
+      dot.setAttribute("aria-label", "Go to photography page " + (i + 1));
+
+      dot.addEventListener("click", function () {
+        currentPage = i;
+        updateCarousel();
+      });
+
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function updateCarousel() {
+    pageCount = Math.ceil(slides.length / itemsPerPage);
+    currentPage = Math.max(0, Math.min(currentPage, pageCount - 1));
+
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = getGap();
+    const offset = currentPage * itemsPerPage * (slideWidth + gap);
+
+    track.style.transform = "translateX(-" + offset + "px)";
+
+    prevButton.disabled = currentPage === 0;
+    nextButton.disabled = currentPage >= pageCount - 1;
+
+    const dots = dotsContainer.querySelectorAll(".gallery-dot");
+
+    dots.forEach(function (dot, index) {
+      const active = index === currentPage;
+      dot.classList.toggle("active", active);
+
+      if (active) {
+        dot.setAttribute("aria-current", "true");
+      } else {
+        dot.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  prevButton.addEventListener("click", function () {
+    if (currentPage > 0) {
+      currentPage--;
+      updateCarousel();
+    }
+  });
+
+  nextButton.addEventListener("click", function () {
+    if (currentPage < pageCount - 1) {
+      currentPage++;
+      updateCarousel();
+    }
+  });
+
+  function handleResponsiveChange() {
+    const newItemsPerPage = getItemsPerPage();
+
+    if (newItemsPerPage !== itemsPerPage) {
+      itemsPerPage = newItemsPerPage;
+      currentPage = 0;
+      buildDots();
+    }
+
+    updateCarousel();
+  }
+
+  let resizeTimer;
+
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(handleResponsiveChange, 80);
+  });
+
+  itemsPerPage = getItemsPerPage();
+  buildDots();
+  updateCarousel();
 })();
 </script>
 
