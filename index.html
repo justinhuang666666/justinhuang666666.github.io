@@ -372,14 +372,32 @@ section{
 
 .item{
   display:grid;
-  grid-template-columns:minmax(145px,180px) minmax(0,1fr);
-  gap:clamp(18px,3vw,28px);
+  grid-template-columns:minmax(145px,180px) 52px minmax(0,1fr);
+  gap:clamp(14px,2.2vw,24px);
+  align-items:center;
   padding:24px 0;
   border-bottom:1px solid var(--line);
 }
 
 .date{
   color:var(--muted);
+}
+
+.item-logo{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex:0 0 auto;
+}
+
+.item-logo img{
+  width:42px;
+  height:42px;
+  display:block;
+  object-fit:contain;
 }
 
 .item h3{
@@ -564,6 +582,18 @@ section{
   }
 }
 
+@media(max-width:680px){
+  .item{
+    grid-template-columns:1fr 46px minmax(0,1fr);
+    align-items:start;
+  }
+
+  .date{
+    font-size:14px;
+    line-height:1.4;
+  }
+}
+
 @media(max-width:560px){
   .photo-wrap{
     gap:18px;
@@ -734,7 +764,8 @@ footer{
   }
 
   .item{
-    grid-template-columns:1fr;
+    grid-template-columns:minmax(125px,160px) 46px minmax(0,1fr);
+    gap:14px;
   }
 
   .info-grid{
@@ -1110,6 +1141,12 @@ footer{
 
       <div class="item">
         <div class="date">Oct 2026 — Present</div>
+        <div class="item-logo cambridge">
+          <img
+            src="images/cambridge.jpg"
+            alt="University of Cambridge crest"
+          />
+        </div>
         <div>
           <h3>PhD in Computer Science</h3>
           <p>University of Cambridge</p>
@@ -1118,6 +1155,12 @@ footer{
 
       <div class="item">
         <div class="date">Sept 2024 — Sept 2026</div>
+        <div class="item-logo huawei">
+          <img
+            src="images/huawei.jpg"
+            alt="Huawei flower logo"
+          />
+        </div>
         <div>
           <h3>CPU Architecture Research Engineer</h3>
           <p>
@@ -1129,6 +1172,12 @@ footer{
 
       <div class="item">
         <div class="date">Dec 2023 — May 2025</div>
+        <div class="item-logo imperial">
+          <img
+            src="images/imperial.jpg"
+            alt="Imperial I logo"
+          />
+        </div>
         <div>
           <h3>Undergraduate Researcher</h3>
           <p>
