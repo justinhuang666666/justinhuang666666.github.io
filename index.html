@@ -394,20 +394,25 @@ section{
   padding-bottom:0;
 }
 
-/* Institution logos */
+/* Institution logos — edge-to-edge */
 
-.experience-logo{
-  position:relative;
-  z-index:1;
-  width:66px;
-  height:66px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:18px;
-  background:var(--card);
-  border:1px solid var(--line);
-  box-shadow:0 5px 18px var(--shadow);
+.experience-logo {
+  position: relative;
+  z-index: 1;
+  width: 66px;
+  height: 66px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 0;
+
+  border: 1px solid var(--line);
+  background: #ffffff;
+  box-shadow: 0 5px 18px var(--shadow);
 
   transition:
     transform .3s ease,
@@ -415,11 +420,23 @@ section{
     border-color .3s ease;
 }
 
-.experience-logo img{
-  width:48px;
-  height:48px;
-  object-fit:contain;
-  display:block;
+.experience-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Match the original logo backgrounds */
+
+.experience-logo.cambridge,
+.experience-logo.huawei {
+  background: #ffffff;
+}
+
+.experience-logo.imperial {
+  background: #0808cc;
 }
 
 /* Text content */
@@ -1375,7 +1392,8 @@ footer{
 
       <div class="experience-entry current">
 
-        <div class="experience-logo">
+        <!-- Cambridge -->
+        <div class="experience-logo cambridge">
           <img
             src="images/cambridge.jpg"
             alt="University of Cambridge crest"
@@ -1406,7 +1424,7 @@ footer{
 
       <div class="experience-entry">
 
-        <div class="experience-logo">
+        <div class="experience-logo huawei">
           <img
             src="images/huawei.jpg"
             alt="Huawei logo"
@@ -1439,7 +1457,7 @@ footer{
 
       <div class="experience-entry">
 
-        <div class="experience-logo">
+        <div class="experience-logo imperial">
           <img
             src="images/imperial.jpg"
             alt="Imperial College London logo"
