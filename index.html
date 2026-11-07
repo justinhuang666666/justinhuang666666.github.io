@@ -1010,6 +1010,43 @@ footer{
   }
 }
 
+
+/* ---------- Quicklinks Alignment ---------- */
+
+.quicklinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Keep Download CV prominent */
+.quicklinks .btn.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform .25s ease,
+              background-color .25s ease;
+}
+
+.quicklinks .btn.primary:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+}
+
+@media(max-width:560px) {
+  .quicklinks .btn.primary {
+    height: 44px;
+    padding: 0 16px;
+  }
+}
+
 </style>
 </head>
 
