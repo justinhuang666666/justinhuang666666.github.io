@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Yinting Huang — Computer Architecture Researcher</title>
+<title>Yinting Huang — PhD Student at University of Cambridge</title>
 
 <!-- Site favicon -->
 <link rel="icon" type="image/png" href="/images/H-favicon.png">
@@ -54,7 +55,6 @@ html[data-theme="dark"]{
 
 body,
 nav,
-.card,
 .info-card,
 .btn,
 section,
@@ -302,34 +302,6 @@ section{
   overflow-wrap:anywhere;
 }
 
-/* ---------- Research ---------- */
-
-.research-list{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:18px;
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:28px;
-  min-height:230px;
-}
-
-.card h3{
-  font-size:24px;
-  margin:0 0 12px;
-  letter-spacing:-.025em;
-}
-
-.card p{
-  color:var(--muted);
-  line-height:1.55;
-  margin:0;
-}
-
 /* ---------- Publications ---------- */
 
 .pub{
@@ -376,7 +348,7 @@ section{
 
 .item{
   display:grid;
-  grid-template-columns: minmax(220px, 240px) 74px minmax(0, 1fr);
+  grid-template-columns:minmax(220px,240px) 74px minmax(0,1fr);
   gap:clamp(14px,2.2vw,24px);
   align-items:center;
   padding:24px 0;
@@ -616,7 +588,6 @@ section{
     flex:0 0 100%;
   }
 
-
   .gallery-carousel{
     width:100%;
   }
@@ -644,7 +615,6 @@ section{
     bottom:-28px;
   }
 }
-
 
 @media(max-width:1000px) and (min-width:561px){
   .gallery-carousel{
@@ -710,10 +680,6 @@ footer{
     gap:34px;
   }
 
-  .research-list{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-  }
-
   .pub{
     grid-template-columns:90px minmax(0,1fr);
   }
@@ -752,10 +718,6 @@ footer{
 
   .section-head{
     gap:14px;
-  }
-
-  .research-list{
-    grid-template-columns:1fr;
   }
 
   .pub{
@@ -829,7 +791,6 @@ footer{
     text-align:center;
   }
 
-  .card,
   .info-card{
     padding:22px;
     border-radius:20px;
@@ -856,7 +817,6 @@ footer{
   .shot{
     flex:0 0 100%;
   }
-
 
   .gallery-carousel{
     width:100%;
@@ -900,22 +860,20 @@ footer{
   }
 }
 
-.pub-award {
-  margin-top: 6px;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #b8860b;
+.pub-award{
+  margin-top:6px;
+  font-size:1rem;
+  font-weight:700;
+  color:#b8860b;
 }
 
-.pub-award strong {
-  font-weight: 800;
+.pub-award strong{
+  font-weight:800;
 }
-
 </style>
 </head>
 
 <body>
-
 <nav>
   <div class="container nav">
     <a class="logo" href="#top">Yinting Huang</a>
@@ -947,7 +905,6 @@ footer{
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-
       <div>
         <div class="kicker">
           Computer Architecture · Memory Systems · Compiler Co-Design
@@ -985,26 +942,19 @@ footer{
 
         <div class="quicklinks">
           <a class="btn primary" href="files/cv.pdf" download>Download CV</a>
-
-          <a
-            class="btn"
-            href="mailto:yinting_justin_huang@outlook.com"
-          >Email</a>
-
+          <a class="btn" href="mailto:yinting_justin_huang@outlook.com">Email</a>
           <a
             class="btn"
             href="https://github.com/justinhuang666666"
             target="_blank"
             rel="noopener noreferrer"
           >GitHub</a>
-
           <a
             class="btn"
             href="https://uk.linkedin.com/in/yinting-huang-6a8a73252"
             target="_blank"
             rel="noopener noreferrer"
           >LinkedIn</a>
-
           <a
             class="btn"
             href="https://ieeexplore.ieee.org/author/595436216212243"
@@ -1021,14 +971,14 @@ footer{
           alt="Yinting Huang"
         />
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- ---------- Research Interests ---------- -->
+
 <section id="research" class="soft">
   <div class="container">
-
     <div class="section-head">
       <div class="label">Research Interests</div>
       <h2 class="title">
@@ -1036,9 +986,7 @@ footer{
       </h2>
     </div>
 
-    <p
-      class="summary research-summary"
-    >
+    <p class="summary research-summary">
       Existing hardware prefetchers are typically specialised for particular
       access patterns and make limited use of the rich program context available
       to compilers. My research aims to bridge this gap by combining compiler-derived
@@ -1047,38 +995,13 @@ footer{
       memory-access patterns, hide memory latency more effectively, and use hardware
       resources more efficiently than conventional fixed-function designs.
     </p>
-
-    <div class="research-list">
-
-      <div class="card">
-        <h3>Memory Systems</h3>
-        <p>
-          Hardware prefetching, cache management, and memory-level parallelism.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Microarchitecture</h3>
-        <p>
-          Adaptive microarchitectural mechanisms for speculation and performance optimization.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Compiler Co-Design</h3>
-        <p>
-          Exposing static program knowledge across traditional abstraction boundaries and
-          combining it with runtime learning to guide memory-system decisions.
-        </p>
-      </div>
-
-    </div>
   </div>
 </section>
 
+<!-- ---------- Publications ---------- -->
+
 <section id="publications">
   <div class="container">
-
     <div class="section-head">
       <div class="label">Selected Publications</div>
       <h2 class="title">Research output</h2>
@@ -1086,12 +1009,10 @@ footer{
 
     <div class="pub">
       <div class="year">2026</div>
-
       <div class="pub-main">
         <div class="pub-title">
           Margo: Prefetcher Selection via Marginal Utility
         </div>
-
         <div class="pub-meta">
           33rd IEEE International Symposium on High-Performance Computer Architecture (HPCA 2027)
         </div>
@@ -1100,28 +1021,19 @@ footer{
 
     <div class="pub">
       <div class="year">2026</div>
-
       <div class="pub-main">
         <div class="pub-title">
           Caerus: Prefetching by Thinking Globally and Acting Locally
         </div>
-
         <div class="pub-meta">
           59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)
         </div>
-
         <div class="pub-award">
           <strong>MICRO Distinguished Paper Award Winner</strong>
         </div>
       </div>
-
       <div class="pub-links">
-        <a
-          href="files/Caerus.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Paper</a>
-
+        <a href="files/Caerus.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
         <a
           href="https://github.com/jw38176/Caerus_Artifact"
           target="_blank"
@@ -1129,27 +1041,19 @@ footer{
         >Artifact</a>
       </div>
     </div>
-    
+
     <div class="pub">
       <div class="year">2026</div>
-
       <div class="pub-main">
         <div class="pub-title">
           Proba: A High-Performance, Low-Traffic Probabilistic Spatial Memory Streaming Prefetcher
         </div>
-
         <div class="pub-meta">
           35th International Conference on Parallel Architectures and Compilation Techniques (PACT 2026)
         </div>
       </div>
-
       <div class="pub-links">
-        <a
-          href="files/Proba.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Paper</a>
-
+        <a href="files/Proba.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
         <a
           href="https://github.com/justinhuang666666/Proba_Artifact"
           target="_blank"
@@ -1160,17 +1064,14 @@ footer{
 
     <div class="pub">
       <div class="year">2025</div>
-
       <div class="pub-main">
         <div class="pub-title">
           ITERA-LLM: Boosting Sub-8-Bit LLM Inference via Iterative Tensor Decomposition
         </div>
-
         <div class="pub-meta">
           33rd International Symposium on Field-Programmable Custom Computing Machines (FCCM 2025)
         </div>
       </div>
-
       <div class="pub-links">
         <a
           href="https://ieeexplore.ieee.org/abstract/document/11008977"
@@ -1179,27 +1080,23 @@ footer{
         >Paper</a>
       </div>
     </div>
-
   </div>
 </section>
 
+<!-- ---------- Experience ---------- -->
+
 <section id="experience" class="soft">
   <div class="container">
-
     <div class="section-head">
       <div class="label">Experience</div>
       <h2 class="title">Academic and industry research</h2>
     </div>
 
     <div class="timeline">
-
       <div class="item">
         <div class="date">Oct 2026 — Present</div>
         <div class="item-logo cambridge">
-          <img
-            src="images/cambridge.jpg"
-            alt="University of Cambridge crest"
-          />
+          <img src="images/cambridge.jpg" alt="University of Cambridge crest" />
         </div>
         <div>
           <h3>PhD in Computer Science</h3>
@@ -1210,10 +1107,7 @@ footer{
       <div class="item">
         <div class="date">Sept 2024 — Sept 2026</div>
         <div class="item-logo huawei">
-          <img
-            src="images/huawei.jpg"
-            alt="Huawei flower logo"
-          />
+          <img src="images/huawei.jpg" alt="Huawei flower logo" />
         </div>
         <div>
           <h3>CPU Architecture Research Engineer</h3>
@@ -1227,10 +1121,7 @@ footer{
       <div class="item">
         <div class="date">Dec 2023 — May 2025</div>
         <div class="item-logo imperial">
-          <img
-            src="images/imperial.jpg"
-            alt="Imperial I logo"
-          />
+          <img src="images/imperial.jpg" alt="Imperial I logo" />
         </div>
         <div>
           <h3>Undergraduate Researcher</h3>
@@ -1239,14 +1130,14 @@ footer{
           </p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- ---------- Academic Profile ---------- -->
+
 <section id="academic">
   <div class="container">
-
     <div class="section-head">
       <div class="label">Academic Profile</div>
       <h2 class="title">
@@ -1255,7 +1146,6 @@ footer{
     </div>
 
     <div class="info-grid">
-
       <div class="info-card">
         <h3>Education</h3>
         <ul>
@@ -1279,20 +1169,19 @@ footer{
           <li>Dean's List for Academic Excellence 2021</li>
         </ul>
       </div>
-
     </div>
   </div>
 </section>
 
+<!-- ---------- Photography ---------- -->
+
 <section id="photography" class="soft photography-section">
   <div class="container">
-
     <div class="photo-wrap">
       <div>
         <div class="label">Photography</div>
         <h2 class="title">Frames Beyond Research</h2>
       </div>
-
       <p>
         Outside research, I use photography to explore places, light, and everyday
         moments — from architecture and city streets to landscapes.
@@ -1300,10 +1189,8 @@ footer{
     </div>
 
     <div class="gallery-carousel">
-
       <div class="gallery-viewport">
         <div class="gallery-track" id="gallery-track">
-
           <div class="shot"><img src="images/photo-1.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-2.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-3.jpg" alt="Photography"></div>
@@ -1313,12 +1200,10 @@ footer{
           <div class="shot"><img src="images/photo-7.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-8.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-9.jpg" alt="Photography"></div>
-
         </div>
       </div>
 
       <div class="gallery-controls">
-
         <button
           class="gallery-arrow"
           id="gallery-prev"
@@ -1338,24 +1223,21 @@ footer{
           type="button"
           aria-label="Next photographs"
         >›</button>
-
       </div>
-
     </div>
-
   </div>
 </section>
 
+<!-- ---------- Contact ---------- -->
+
 <section id="contact" class="contact">
   <div class="container contact-grid">
-
     <div>
       <div class="label">Contact</div>
       <h2 class="title">
         Research and professional opportunities.
       </h2>
     </div>
-
     <div>
       <p>
         Department of Computer Science and Technology<br>
@@ -1366,7 +1248,6 @@ footer{
         Email: yinting_justin_huang@outlook.com
       </p>
     </div>
-
   </div>
 </section>
 
@@ -1416,13 +1297,9 @@ footer{
   applyTheme(savedTheme() || systemTheme());
 
   toggle.addEventListener("click", function () {
-    const current =
-      root.getAttribute("data-theme") || systemTheme();
+    const current = root.getAttribute("data-theme") || systemTheme();
 
-    const next =
-      current === "dark"
-        ? "light"
-        : "dark";
+    const next = current === "dark" ? "light" : "dark";
 
     localStorage.setItem(storageKey, next);
     applyTheme(next);
@@ -1470,6 +1347,7 @@ footer{
     if (window.matchMedia("(max-width: 560px)").matches) {
       return 12;
     }
+
     return 16;
   }
 
@@ -1481,6 +1359,7 @@ footer{
       const dot = document.createElement("button");
       dot.className = "gallery-dot";
       dot.type = "button";
+
       dot.setAttribute("aria-label", "Go to photography page " + (i + 1));
 
       dot.addEventListener("click", function () {
