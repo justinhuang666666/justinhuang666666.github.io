@@ -1,9 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Yinting Huang — PhD Student at University of Cambridge</title>
 
 <!-- Site favicon -->
@@ -11,6 +13,9 @@
 <link rel="apple-touch-icon" href="/images/H-favicon.png">
 
 <style>
+
+/* ---------- Theme ---------- */
+
 :root{
   --bg:#ffffff;
   --soft:#f5f5f7;
@@ -340,51 +345,202 @@ section{
   color:var(--accent);
 }
 
+.pub-award{
+  margin-top:6px;
+  font-size:1rem;
+  font-weight:700;
+  color:#b8860b;
+}
+
+.pub-award strong{
+  font-weight:800;
+}
+
 /* ---------- Experience ---------- */
 
-.timeline{
-  border-top:1px solid var(--line);
+.experience-timeline{
+  position:relative;
+  margin-top:12px;
 }
 
-.item{
+/* Vertical connecting line */
+
+.experience-timeline::before{
+  content:"";
+  position:absolute;
+  left:32px;
+  top:36px;
+  bottom:54px;
+  width:2px;
+  background:linear-gradient(
+    to bottom,
+    var(--accent),
+    var(--line) 38%,
+    var(--line)
+  );
+}
+
+/* Individual timeline entries */
+
+.experience-entry{
+  position:relative;
   display:grid;
-  grid-template-columns:minmax(220px,240px) 74px minmax(0,1fr);
-  gap:clamp(14px,2.2vw,24px);
-  align-items:center;
-  padding:24px 0;
-  border-bottom:1px solid var(--line);
+  grid-template-columns:66px minmax(0,1fr);
+  gap:28px;
+  padding:0 0 38px;
 }
 
-.date{
-  color:var(--muted);
+.experience-entry:last-child{
+  padding-bottom:0;
 }
 
-.item-logo{
+/* Institution logos */
+
+.experience-logo{
+  position:relative;
+  z-index:1;
   width:66px;
   height:66px;
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
-  flex:0 0 auto;
+  border-radius:18px;
+  background:var(--card);
+  border:1px solid var(--line);
+  box-shadow:0 5px 18px var(--shadow);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease,
+    border-color .3s ease;
 }
 
-.item-logo img{
-  width:60px;
-  height:60px;
-  display:block;
+.experience-logo img{
+  width:48px;
+  height:48px;
   object-fit:contain;
+  display:block;
 }
 
-.item h3{
-  margin:0 0 6px;
-  font-size:20px;
+/* Text content */
+
+.experience-content{
+  padding:6px 0 32px;
+  border-bottom:1px solid var(--line);
+  transition:transform .3s ease;
 }
 
-.item p{
-  margin:0;
+.experience-entry:last-child .experience-content{
+  border-bottom:none;
+  padding-bottom:0;
+}
+
+/* Date */
+
+.experience-date{
+  display:inline-block;
+  margin-bottom:12px;
+  color:var(--accent);
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+
+/* Position title */
+
+.experience-content h3{
+  margin:0 0 8px;
+  font-size:clamp(20px,2vw,25px);
+  font-weight:650;
+  letter-spacing:-.025em;
+  line-height:1.3;
+}
+
+/* Institution */
+
+.experience-institution{
+  font-size:16px;
+  font-weight:550;
+  color:var(--text);
+  margin-bottom:10px;
+}
+
+/* Description */
+
+.experience-description{
   color:var(--muted);
-  line-height:1.5;
+  font-size:15px;
+  line-height:1.65;
+  max-width:780px;
+  margin:0;
+}
+
+/* Hover animations */
+
+.experience-entry:hover .experience-logo{
+  transform:translateY(-3px);
+  border-color:var(--accent);
+  box-shadow:0 10px 26px var(--shadow);
+}
+
+.experience-entry:hover .experience-content{
+  transform:translateX(4px);
+}
+
+/* Current position highlight */
+
+.experience-entry.current .experience-logo{
+  border-color:var(--accent);
+}
+
+/* ---------- Experience Responsive ---------- */
+
+@media(max-width:680px){
+
+  .experience-timeline::before{
+    left:25px;
+    top:26px;
+    bottom:45px;
+  }
+
+  .experience-entry{
+    grid-template-columns:52px minmax(0,1fr);
+    gap:18px;
+    padding-bottom:30px;
+  }
+
+  .experience-logo{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+  }
+
+  .experience-logo img{
+    width:39px;
+    height:39px;
+  }
+
+  .experience-content{
+    padding-top:2px;
+    padding-bottom:26px;
+  }
+
+  .experience-content h3{
+    font-size:19px;
+  }
+
+  .experience-institution{
+    font-size:15px;
+  }
+
+  .experience-description{
+    font-size:14px;
+  }
+
+  .experience-date{
+    font-size:12px;
+  }
 }
 
 /* ---------- Academic Profile ---------- */
@@ -493,6 +649,7 @@ section{
   z-index:3;
   transform:translateY(-50%);
   box-shadow:0 8px 24px var(--shadow);
+
   transition:
     background-color .2s ease,
     opacity .2s ease;
@@ -536,6 +693,7 @@ section{
   background:var(--muted);
   opacity:.3;
   cursor:pointer;
+
   transition:
     width .25s ease,
     opacity .25s ease,
@@ -549,6 +707,7 @@ section{
 }
 
 @media(max-width:850px){
+
   .photo-wrap{
     grid-template-columns:1fr;
   }
@@ -558,19 +717,8 @@ section{
   }
 }
 
-@media(max-width:680px){
-  .item{
-    grid-template-columns:1fr 66px minmax(0,1fr);
-    align-items:start;
-  }
-
-  .date{
-    font-size:14px;
-    line-height:1.4;
-  }
-}
-
 @media(max-width:560px){
+
   .photo-wrap{
     gap:18px;
     margin-bottom:28px;
@@ -617,6 +765,7 @@ section{
 }
 
 @media(max-width:1000px) and (min-width:561px){
+
   .gallery-carousel{
     width:86%;
   }
@@ -631,8 +780,11 @@ section{
 }
 
 @media(prefers-reduced-motion:reduce){
+
   .gallery-track,
-  .shot img{
+  .shot img,
+  .experience-logo,
+  .experience-content{
     transition:none;
   }
 }
@@ -675,6 +827,7 @@ footer{
 /* ---------- Responsive ---------- */
 
 @media(max-width:1000px){
+
   .hero-grid{
     grid-template-columns:minmax(0,1fr) minmax(190px,230px);
     gap:34px;
@@ -691,6 +844,7 @@ footer{
 }
 
 @media(max-width:850px){
+
   .links{
     display:none;
   }
@@ -729,11 +883,6 @@ footer{
     justify-content:flex-start;
   }
 
-  .item{
-    grid-template-columns:minmax(125px,160px) 66px minmax(0,1fr);
-    gap:14px;
-  }
-
   .info-grid{
     grid-template-columns:1fr;
   }
@@ -753,6 +902,7 @@ footer{
 }
 
 @media(max-width:560px){
+
   nav .nav{
     height:56px;
   }
@@ -796,8 +946,7 @@ footer{
     border-radius:20px;
   }
 
-  .pub,
-  .item{
+  .pub{
     padding:20px 0;
   }
 
@@ -851,6 +1000,7 @@ footer{
 }
 
 @media(max-width:380px){
+
   .quicklinks{
     grid-template-columns:1fr;
   }
@@ -860,25 +1010,20 @@ footer{
   }
 }
 
-.pub-award{
-  margin-top:6px;
-  font-size:1rem;
-  font-weight:700;
-  color:#b8860b;
-}
-
-.pub-award strong{
-  font-weight:800;
-}
 </style>
 </head>
 
 <body>
+
+<!-- ---------- Navigation ---------- -->
+
 <nav>
   <div class="container nav">
+
     <a class="logo" href="#top">Yinting Huang</a>
 
     <div style="display:flex;align-items:center;gap:18px">
+
       <div class="links">
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
@@ -896,16 +1041,22 @@ footer{
       >
         <span class="theme-icon" id="theme-icon">◐</span>
       </button>
+
     </div>
   </div>
 </nav>
 
 <main id="top">
 
+<!-- ---------- Hero ---------- -->
+
 <section class="hero">
   <div class="container">
+
     <div class="hero-grid">
+
       <div>
+
         <div class="kicker">
           Computer Architecture · Memory Systems · Compiler Co-Design
         </div>
@@ -941,26 +1092,39 @@ footer{
         </p>
 
         <div class="quicklinks">
-          <a class="btn primary" href="files/cv.pdf" download>Download CV</a>
-          <a class="btn" href="mailto:yinting_justin_huang@outlook.com">Email</a>
+
+          <a
+            class="btn primary"
+            href="files/cv.pdf"
+            download
+          >Download CV</a>
+
+          <a
+            class="btn"
+            href="mailto:yinting_justin_huang@outlook.com"
+          >Email</a>
+
           <a
             class="btn"
             href="https://github.com/justinhuang666666"
             target="_blank"
             rel="noopener noreferrer"
           >GitHub</a>
+
           <a
             class="btn"
             href="https://uk.linkedin.com/in/yinting-huang-6a8a73252"
             target="_blank"
             rel="noopener noreferrer"
           >LinkedIn</a>
+
           <a
             class="btn"
             href="https://ieeexplore.ieee.org/author/595436216212243"
             target="_blank"
             rel="noopener noreferrer"
           >IEEE Xplore</a>
+
         </div>
       </div>
 
@@ -971,6 +1135,7 @@ footer{
           alt="Yinting Huang"
         />
       </div>
+
     </div>
   </div>
 </section>
@@ -979,6 +1144,7 @@ footer{
 
 <section id="research" class="soft">
   <div class="container">
+
     <div class="section-head">
       <div class="label">Research Interests</div>
       <h2 class="title">
@@ -995,6 +1161,7 @@ footer{
       memory-access patterns, hide memory latency more effectively, and use hardware
       resources more efficiently than conventional fixed-function designs.
     </p>
+
   </div>
 </section>
 
@@ -1002,38 +1169,54 @@ footer{
 
 <section id="publications">
   <div class="container">
+
     <div class="section-head">
       <div class="label">Selected Publications</div>
       <h2 class="title">Research output</h2>
     </div>
 
+    <!-- Margo -->
+
     <div class="pub">
       <div class="year">2026</div>
+
       <div class="pub-main">
         <div class="pub-title">
           Margo: Prefetcher Selection via Marginal Utility
         </div>
+
         <div class="pub-meta">
           33rd IEEE International Symposium on High-Performance Computer Architecture (HPCA 2027)
         </div>
       </div>
     </div>
 
+    <!-- Caerus -->
+
     <div class="pub">
       <div class="year">2026</div>
+
       <div class="pub-main">
         <div class="pub-title">
           Caerus: Prefetching by Thinking Globally and Acting Locally
         </div>
+
         <div class="pub-meta">
           59th IEEE/ACM International Symposium on Microarchitecture (MICRO 2026)
         </div>
+
         <div class="pub-award">
           <strong>MICRO Distinguished Paper Award Winner</strong>
         </div>
       </div>
+
       <div class="pub-links">
-        <a href="files/Caerus.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+        <a
+          href="files/Caerus.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Paper</a>
+
         <a
           href="https://github.com/jw38176/Caerus_Artifact"
           target="_blank"
@@ -1042,18 +1225,28 @@ footer{
       </div>
     </div>
 
+    <!-- Proba -->
+
     <div class="pub">
       <div class="year">2026</div>
+
       <div class="pub-main">
         <div class="pub-title">
           Proba: A High-Performance, Low-Traffic Probabilistic Spatial Memory Streaming Prefetcher
         </div>
+
         <div class="pub-meta">
           35th International Conference on Parallel Architectures and Compilation Techniques (PACT 2026)
         </div>
       </div>
+
       <div class="pub-links">
-        <a href="files/Proba.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+        <a
+          href="files/Proba.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Paper</a>
+
         <a
           href="https://github.com/justinhuang666666/Proba_Artifact"
           target="_blank"
@@ -1062,16 +1255,21 @@ footer{
       </div>
     </div>
 
+    <!-- ITERA-LLM -->
+
     <div class="pub">
       <div class="year">2025</div>
+
       <div class="pub-main">
         <div class="pub-title">
           ITERA-LLM: Boosting Sub-8-Bit LLM Inference via Iterative Tensor Decomposition
         </div>
+
         <div class="pub-meta">
           33rd International Symposium on Field-Programmable Custom Computing Machines (FCCM 2025)
         </div>
       </div>
+
       <div class="pub-links">
         <a
           href="https://ieeexplore.ieee.org/abstract/document/11008977"
@@ -1080,6 +1278,7 @@ footer{
         >Paper</a>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -1087,49 +1286,113 @@ footer{
 
 <section id="experience" class="soft">
   <div class="container">
+
     <div class="section-head">
       <div class="label">Experience</div>
-      <h2 class="title">Academic and industry research</h2>
+      <h2 class="title">
+        Academic and industry research
+      </h2>
     </div>
 
-    <div class="timeline">
-      <div class="item">
-        <div class="date">Oct 2026 — Present</div>
-        <div class="item-logo cambridge">
-          <img src="images/cambridge.jpg" alt="University of Cambridge crest" />
+    <div class="experience-timeline">
+
+      <!-- Cambridge -->
+
+      <div class="experience-entry current">
+
+        <div class="experience-logo">
+          <img
+            src="images/cambridge.jpg"
+            alt="University of Cambridge crest"
+          />
         </div>
-        <div>
+
+        <div class="experience-content">
+
+          <div class="experience-date">
+            Oct 2026 — Present
+          </div>
+
           <h3>PhD in Computer Science</h3>
-          <p>University of Cambridge</p>
+
+          <div class="experience-institution">
+            University of Cambridge
+          </div>
+
+          <p class="experience-description">
+            CASCADE Research Centre · Compiler–hardware
+            co-design for memory prefetching.
+          </p>
+
         </div>
       </div>
 
-      <div class="item">
-        <div class="date">Sept 2024 — Sept 2026</div>
-        <div class="item-logo huawei">
-          <img src="images/huawei.jpg" alt="Huawei flower logo" />
+      <!-- Huawei -->
+
+      <div class="experience-entry">
+
+        <div class="experience-logo">
+          <img
+            src="images/huawei.jpg"
+            alt="Huawei logo"
+          />
         </div>
-        <div>
+
+        <div class="experience-content">
+
+          <div class="experience-date">
+            Sept 2024 — Sept 2026
+          </div>
+
           <h3>CPU Architecture Research Engineer</h3>
-          <p>
-            Huawei Newton Research Centre · Hardware prefetcher research,
-            CPU modeling and performance analysis.
+
+          <div class="experience-institution">
+            Huawei Newton Research Centre
+          </div>
+
+          <p class="experience-description">
+            Research on hardware prefetching, cache
+            management, and CPU microarchitecture.
+            Developed and evaluated prefetching mechanisms
+            using architectural simulation.
           </p>
+
         </div>
       </div>
 
-      <div class="item">
-        <div class="date">Dec 2023 — May 2025</div>
-        <div class="item-logo imperial">
-          <img src="images/imperial.jpg" alt="Imperial I logo" />
+      <!-- Imperial -->
+
+      <div class="experience-entry">
+
+        <div class="experience-logo">
+          <img
+            src="images/imperial.jpg"
+            alt="Imperial College London logo"
+          />
         </div>
-        <div>
+
+        <div class="experience-content">
+
+          <div class="experience-date">
+            Dec 2023 — May 2025
+          </div>
+
           <h3>Undergraduate Researcher</h3>
-          <p>
-            Imperial College London · FPGA acceleration for large language models.
+
+          <div class="experience-institution">
+            Imperial College London
+          </div>
+
+          <p class="experience-description">
+            Research on FPGA acceleration and efficient
+            inference for large language models,
+            focusing on low-precision computation
+            and hardware-aware optimisation.
           </p>
+
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1138,6 +1401,7 @@ footer{
 
 <section id="academic">
   <div class="container">
+
     <div class="section-head">
       <div class="label">Academic Profile</div>
       <h2 class="title">
@@ -1146,13 +1410,17 @@ footer{
     </div>
 
     <div class="info-grid">
+
       <div class="info-card">
+
         <h3>Education</h3>
+
         <ul>
           <li>
-            PhD in Computer Science, University of Cambridge, St John's College,
-            Oct 2026 — Present
+            PhD in Computer Science, University of Cambridge,
+            St John's College, Oct 2026 — Present
           </li>
+
           <li>
             MEng Electrical and Electronics Engineering,
             Imperial College London,
@@ -1160,15 +1428,20 @@ footer{
             First-Class Honours
           </li>
         </ul>
+
       </div>
 
       <div class="info-card">
+
         <h3>Awards & Recognition</h3>
+
         <ul>
           <li>Dean's List for Academic Excellence 2020</li>
           <li>Dean's List for Academic Excellence 2021</li>
         </ul>
+
       </div>
+
     </div>
   </div>
 </section>
@@ -1177,20 +1450,27 @@ footer{
 
 <section id="photography" class="soft photography-section">
   <div class="container">
+
     <div class="photo-wrap">
+
       <div>
         <div class="label">Photography</div>
         <h2 class="title">Frames Beyond Research</h2>
       </div>
+
       <p>
         Outside research, I use photography to explore places, light, and everyday
         moments — from architecture and city streets to landscapes.
       </p>
+
     </div>
 
     <div class="gallery-carousel">
+
       <div class="gallery-viewport">
+
         <div class="gallery-track" id="gallery-track">
+
           <div class="shot"><img src="images/photo-1.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-2.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-3.jpg" alt="Photography"></div>
@@ -1200,10 +1480,12 @@ footer{
           <div class="shot"><img src="images/photo-7.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-8.jpg" alt="Photography"></div>
           <div class="shot"><img src="images/photo-9.jpg" alt="Photography"></div>
+
         </div>
       </div>
 
       <div class="gallery-controls">
+
         <button
           class="gallery-arrow"
           id="gallery-prev"
@@ -1223,7 +1505,9 @@ footer{
           type="button"
           aria-label="Next photographs"
         >›</button>
+
       </div>
+
     </div>
   </div>
 </section>
@@ -1231,13 +1515,16 @@ footer{
 <!-- ---------- Contact ---------- -->
 
 <section id="contact" class="contact">
+
   <div class="container contact-grid">
+
     <div>
       <div class="label">Contact</div>
       <h2 class="title">
         Research and professional opportunities.
       </h2>
     </div>
+
     <div>
       <p>
         Department of Computer Science and Technology<br>
@@ -1248,10 +1535,14 @@ footer{
         Email: yinting_justin_huang@outlook.com
       </p>
     </div>
+
   </div>
+
 </section>
 
 </main>
+
+<!-- ---------- Footer ---------- -->
 
 <footer>
   <div class="container footer">
@@ -1259,8 +1550,12 @@ footer{
   </div>
 </footer>
 
+<!-- ---------- Scripts ---------- -->
+
 <script>
+
 (function () {
+
   const root = document.documentElement;
   const toggle = document.getElementById("theme-toggle");
   const icon = document.getElementById("theme-icon");
@@ -1277,6 +1572,7 @@ footer{
   }
 
   function applyTheme(theme) {
+
     root.setAttribute("data-theme", theme);
 
     icon.textContent = theme === "dark" ? "☀" : "☾";
@@ -1297,9 +1593,12 @@ footer{
   applyTheme(savedTheme() || systemTheme());
 
   toggle.addEventListener("click", function () {
-    const current = root.getAttribute("data-theme") || systemTheme();
 
-    const next = current === "dark" ? "light" : "dark";
+    const current =
+      root.getAttribute("data-theme") || systemTheme();
+
+    const next =
+      current === "dark" ? "light" : "dark";
 
     localStorage.setItem(storageKey, next);
     applyTheme(next);
@@ -1308,13 +1607,19 @@ footer{
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", function () {
+
       if (!savedTheme()) {
         applyTheme(systemTheme());
       }
+
     });
+
 })();
 
+/* ---------- Photography Carousel ---------- */
+
 (function () {
+
   const track = document.getElementById("gallery-track");
   const viewport = document.querySelector(".gallery-viewport");
   const prevButton = document.getElementById("gallery-prev");
@@ -1327,11 +1632,16 @@ footer{
 
   const slides = Array.from(track.querySelectorAll(".shot"));
 
+  if (!slides.length) {
+    return;
+  }
+
   let currentPage = 0;
   let itemsPerPage = 3;
   let pageCount = 1;
 
   function getItemsPerPage() {
+
     if (window.matchMedia("(max-width: 560px)").matches) {
       return 1;
     }
@@ -1344,6 +1654,7 @@ footer{
   }
 
   function getGap() {
+
     if (window.matchMedia("(max-width: 560px)").matches) {
       return 12;
     }
@@ -1352,15 +1663,21 @@ footer{
   }
 
   function buildDots() {
+
     dotsContainer.innerHTML = "";
     pageCount = Math.ceil(slides.length / itemsPerPage);
 
     for (let i = 0; i < pageCount; i++) {
+
       const dot = document.createElement("button");
+
       dot.className = "gallery-dot";
       dot.type = "button";
 
-      dot.setAttribute("aria-label", "Go to photography page " + (i + 1));
+      dot.setAttribute(
+        "aria-label",
+        "Go to photography page " + (i + 1)
+      );
 
       dot.addEventListener("click", function () {
         currentPage = i;
@@ -1372,22 +1689,35 @@ footer{
   }
 
   function updateCarousel() {
+
     pageCount = Math.ceil(slides.length / itemsPerPage);
-    currentPage = Math.max(0, Math.min(currentPage, pageCount - 1));
+
+    currentPage = Math.max(
+      0,
+      Math.min(currentPage, pageCount - 1)
+    );
 
     const slideWidth = slides[0].getBoundingClientRect().width;
     const gap = getGap();
-    const offset = currentPage * itemsPerPage * (slideWidth + gap);
 
-    track.style.transform = "translateX(-" + offset + "px)";
+    const offset =
+      currentPage * itemsPerPage * (slideWidth + gap);
+
+    track.style.transform =
+      "translateX(-" + offset + "px)";
 
     prevButton.disabled = currentPage === 0;
-    nextButton.disabled = currentPage >= pageCount - 1;
 
-    const dots = dotsContainer.querySelectorAll(".gallery-dot");
+    nextButton.disabled =
+      currentPage >= pageCount - 1;
+
+    const dots =
+      dotsContainer.querySelectorAll(".gallery-dot");
 
     dots.forEach(function (dot, index) {
+
       const active = index === currentPage;
+
       dot.classList.toggle("active", active);
 
       if (active) {
@@ -1399,6 +1729,7 @@ footer{
   }
 
   prevButton.addEventListener("click", function () {
+
     if (currentPage > 0) {
       currentPage--;
       updateCarousel();
@@ -1406,6 +1737,7 @@ footer{
   });
 
   nextButton.addEventListener("click", function () {
+
     if (currentPage < pageCount - 1) {
       currentPage++;
       updateCarousel();
@@ -1413,6 +1745,7 @@ footer{
   });
 
   function handleResponsiveChange() {
+
     const newItemsPerPage = getItemsPerPage();
 
     if (newItemsPerPage !== itemsPerPage) {
@@ -1427,14 +1760,22 @@ footer{
   let resizeTimer;
 
   window.addEventListener("resize", function () {
+
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(handleResponsiveChange, 80);
+
+    resizeTimer = setTimeout(
+      handleResponsiveChange,
+      80
+    );
   });
 
   itemsPerPage = getItemsPerPage();
+
   buildDots();
   updateCarousel();
+
 })();
+
 </script>
 
 </body>
